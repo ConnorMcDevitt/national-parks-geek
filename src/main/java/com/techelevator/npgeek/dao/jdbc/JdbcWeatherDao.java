@@ -1,4 +1,4 @@
-package com.techelevator.npgeek.jdbc;
+package com.techelevator.npgeek.dao.jdbc;
 
 import com.techelevator.npgeek.dao.WeatherDao;
 
