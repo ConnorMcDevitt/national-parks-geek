@@ -5,4 +5,9 @@
 
 <%@include file="common/header.jspf"%>
 
+<c:forEach var="park" items="${topParksList.keySet()}">
+	<c:out value="${park.parkName}" />
+	<c:out value="${topParksList.get(park)}" /><br>
+</c:forEach>
+
 <%@include file="common/footer.jspf"%>

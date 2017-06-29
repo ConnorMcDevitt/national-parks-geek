@@ -17,6 +17,46 @@ body {
 	text-align: center;
 }
 
+.weather {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.today {
+	display: inline-block;
+	width: 238.55px;
+	text-align: center;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.today img {
+	width: 100%;
+}
+
+.forecast {
+	display: inline-block;
+	text-align: center;
+	margin-left: 15px;
+	margin-right: 15px;
+	width: 112.5px;
+}
+
+.forecast img {
+	width: 100%;
+}
+
+.tempScale {
+	display: block;
+}
+
+.option {
+	margin-right: 20px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
 #quote-font {
 	font-family: Thirsty Rough, cursive;
 	font-style: italic;

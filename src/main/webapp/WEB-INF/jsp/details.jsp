@@ -60,18 +60,107 @@
 	<br><br><br><br><h3 id="quote-font">"<c:out value="${park.inspirationalQuote}" />"</h3> <h6> - <c:out value="${park.inspirationalQuoteSource}" /></h6></p>
 </div>
 </div>
+<div class="weather">
 <c:set var="weather" value="${weatherList[0]}" />
 <c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
-<div>
+<c:choose>
+	<c:when test="${isCelsius}">
+		<c:set var="highTemp" value="${(weather.high - 32) / 1.8}" />
+		<c:set var="lowTemp" value="${(weather.low - 32) / 1.8}" />
+		<c:set var="tempScale" value="°C" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="highTemp" value="${weather.high}" />
+		<c:set var="lowTemp" value="${weather.low}" />
+		<c:set var="tempScale" value="°F" />
+
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${weather.forecast == 'snow'}">
+		<c:set var="weatherMessage" value="Be sure to pack snow shoes!" />
+	</c:when>
+	<c:when test="${weather.forecast == 'rain'}">
+		<c:set var="weatherMessage" value="Be sure to pack rain gear and wear waterproof shoes!" />
+	</c:when>
+	<c:when test="${weather.forecast == 'thunderstorms'}">
+		<c:set var="weatherMessage" value="Be sure to seek shelter and avoid hiking on exposed ridges!" />
+	</c:when>
+	<c:when test="${weather.forecast == 'sunny'}">
+		<c:set var="weatherMessage" value="Be sure to bring sunblock!" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="weatherMessage" value="" />
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${weather.high > 75}">
+		<c:set var="tempMessage" value="Bring an extra gallon of water." />
+	</c:when>
+	<c:when test="${weather.low < 20}">
+		<c:set var="tempMessage" value="Be aware of dangerous, frigid temperatures." />
+	</c:when>
+	<c:when test="${(weather.high - weather.low) > 20}">
+		<c:set var="tempMessage" value="Wear breathable layers." />
+	</c:when>
+	<c:when test="${weather.high > 75 && (weather.high - weather.low) > 20}">
+		<c:set var="tempMessage" value="Bring an extra gallon of water and wear breathable layers." />
+	</c:when>
+	<c:when test="${weather.low < 20 && (weather.high - weather.low) > 20}">
+		<c:set var="tempMessage" value="Be aware of dangerous, frigid temperatures and wear breathable layers." />
+	</c:when>
+	<c:when test="${weather.low < 20 && weather.high > 75}">
+		<c:set var="tempMessage" value="The weather sucks, prepare for anything." />
+	</c:when>
+	<c:otherwise>
+		<c:set var="tempMessage" value="" />
+	</c:otherwise>
+</c:choose>
+<c:url var="actionUrl" value="/details/${park.parkCode}"/>
+<div class="tempScale">
+<c:choose>	
+	<c:when test="${isCelsius}">
+		<c:set var="isSelected" value="selected" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="isSelected" value="" />
+	</c:otherwise>
+</c:choose>
+<form method="POST" action="${actionUrl}">
+	<select name="isCelsius">
+		<option value="false" selected>Fahrenheit</option>
+		<option value="true" ${isSelected}>Celsius</option>
+	</select>
+	<input type="submit" name="submit" class="btn btn-success" value="Go"/>
+</form>
+</div>
+<div class="today">
 	<h3>Today</h3>
 	<img src="${weatherImg}" />
+	<h7>High: <fmt:formatNumber maxFractionDigits="0" value="${highTemp}" /><c:out value="${tempScale}" /></h7> | <h7>Low: <fmt:formatNumber maxFractionDigits="0" value="${lowTemp}" /><c:out value="${tempScale}" /></h7>
+	<p><c:out value="${weatherMessage}" /> <c:out value="${tempMessage}" /></p>
 </div>
 <c:forEach varStatus="loop" var="weather" items="${weatherList}" begin="1">
 	<c:set var="weather" value="${weatherList[loop.index]}" />
+		<c:choose>
+		<c:when test="${isCelsius}">
+			<c:set var="highTemp" value="${(weather.high - 32) / 1.8}" />
+			<c:set var="lowTemp" value="${(weather.low - 32) / 1.8}" />
+			<c:set var="tempScale" value="°C" />
+		</c:when>
+		<c:otherwise>
+			<c:set var="highTemp" value="${weather.high}" />
+			<c:set var="lowTemp" value="${weather.low}" />
+			<c:set var="tempScale" value="°F" />
+		</c:otherwise>
+	</c:choose>
 	<c:url var="weatherImg" value="/img/weather/${weather.forecast}.png" />
-	<div>
+	<div class="forecast">
 		<img src="${weatherImg}" />
+		<h7>High: <fmt:formatNumber maxFractionDigits="0" value="${highTemp}" /><c:out value="${tempScale}" /></h7><br>
+		<h7>Low: <fmt:formatNumber maxFractionDigits="0" value="${lowTemp}" /><c:out value="${tempScale}" /></h7>
 	</div>
 </c:forEach>
+</div>
 
 <%@include file="common/footer.jspf"%>

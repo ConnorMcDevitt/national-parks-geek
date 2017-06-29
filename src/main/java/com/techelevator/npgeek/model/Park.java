@@ -1,5 +1,7 @@
 package com.techelevator.npgeek.model;
 
+import java.util.List;
+
 public class Park {
 	
 	private String parkCode;	
@@ -18,6 +20,18 @@ public class Park {
 	private Integer entryFee;
 	private Integer numberOfAnimalSpecies;
 	
+	private List<SurveyResult> surveyList;
+	
+	public void addSurveyToList(SurveyResult survey) {
+		surveyList.add(survey);
+	}
+	
+	public List<SurveyResult> getSurveyList() {
+		return surveyList;
+	}
+	public void setSurveyList(List<SurveyResult> surveyList) {
+		this.surveyList = surveyList;
+	}
 	public String getParkCode() {
 		return parkCode;
 	}
