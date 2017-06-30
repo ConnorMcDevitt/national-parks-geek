@@ -85,4 +85,9 @@ text-align: center;
 .centerauto{
 	margin:auto;
 }
+
+.media-left img {
+    border-radius: 20px;
+    
+}
 }
