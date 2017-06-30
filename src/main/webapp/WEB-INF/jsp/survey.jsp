@@ -18,7 +18,7 @@
 		<br>
 		<label for="emailAddress">Email Address</label>
 		<form:input path="emailAddress" placeholder="example@example.com" />
-<%-- 		<form:errors path="emailAddress"/> --%>
+		<form:errors path="emailAddress" class="cssError"/>
 		<br>
 		<br>
 		<label for="state">State of Residence</label>

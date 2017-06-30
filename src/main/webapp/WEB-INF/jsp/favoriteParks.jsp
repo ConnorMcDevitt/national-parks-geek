@@ -17,7 +17,7 @@
 <c:forEach var = "park" items = "${topParksList.keySet()}" varStatus = "loop">
 <tr>
 <th><c:out value="${loop.count}"/></th>
-	<td><c:out value="${park.parkName}" /></td>
+	<td><a href="<c:url value="/details/${park.parkCode}"/>"><c:out value="${park.parkName}" /></a></td>
 	<td><c:out value="${topParksList.get(park)}" /></td>
 	</tr>
 </c:forEach>

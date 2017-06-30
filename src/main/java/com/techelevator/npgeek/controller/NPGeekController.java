@@ -70,7 +70,7 @@ public class NPGeekController {
 	}
 	
 	@RequestMapping(path={"/survey"}, method=RequestMethod.POST)
-	public String receiveSurveyForm(@Valid @ModelAttribute("survey") SurveyResult survey, RedirectAttributes attr, BindingResult result) {
+	public String receiveSurveyForm(@Valid @ModelAttribute SurveyResult survey, BindingResult result, RedirectAttributes attr) {
 		attr.addFlashAttribute("survey", survey);
 		if(result.hasErrors()) {
 			attr.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX +"survey", result);

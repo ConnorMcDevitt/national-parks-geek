@@ -8,7 +8,7 @@ public class SurveyResult {
 	private Integer surveyId;
 	private String parkCode;
 	@NotBlank(message="Field must be populated with an email address")
-//	@Email(message="Please enter a valid email address!")
+	@Email(message="Please enter a valid email address!")
 	private String emailAddress;
 	private String state;
 	private String activityLevel;

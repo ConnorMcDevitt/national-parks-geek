@@ -82,12 +82,15 @@ body {
 .center{
 text-align: center;
 }
+
 .centerauto{
 	margin:auto;
 }
 
 .media-left img {
     border-radius: 20px;
-    
 }
+
+.cssError {
+	color: #d00107;
 }
