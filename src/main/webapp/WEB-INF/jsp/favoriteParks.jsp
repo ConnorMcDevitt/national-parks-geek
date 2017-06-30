@@ -4,10 +4,23 @@
 <c:set var="pageTitle" value="National Park Geek Top Parks"/>
 
 <%@include file="common/header.jspf"%>
-
-<c:forEach var="park" items="${topParksList.keySet()}">
-	<c:out value="${park.parkName}" />
-	<c:out value="${topParksList.get(park)}" /><br>
+<h3 class="center">Top Parks</h3>
+<div class="compression centerauto">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>#</th>
+<th>Park</th>
+<th>Votes</th>
+</tr>
+</thead>
+<c:forEach var = "park" items = "${topParksList.keySet()}" varStatus = "loop">
+<tr>
+<th><c:out value="${loop.count}"/></th>
+	<td><c:out value="${park.parkName}" /></td>
+	<td><c:out value="${topParksList.get(park)}" /></td>
+	</tr>
 </c:forEach>
-
+</table>
+</div>
 <%@include file="common/footer.jspf"%>

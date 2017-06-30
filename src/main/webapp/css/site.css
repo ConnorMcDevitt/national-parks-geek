@@ -1,5 +1,5 @@
 body { 
-	padding-top: 70px;
+	padding-top: 190px;
 	margin-left: 25px;
 	margin-right: 25px;
 }
@@ -60,4 +60,29 @@ body {
 #quote-font {
 	font-family: Thirsty Rough, cursive;
 	font-style: italic;
+}
+
+.container img{
+	max-width: 500px;
+}
+
+.navbar-default{
+	background-color:#FFF;
+	
+}
+
+.navbarcustom {
+	float: left;
+}
+
+.compression {
+	width: 50%;
+}
+
+.center{
+text-align: center;
+}
+.centerauto{
+	margin:auto;
+}
 }

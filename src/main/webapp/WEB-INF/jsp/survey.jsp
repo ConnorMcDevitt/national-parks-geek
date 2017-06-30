@@ -7,15 +7,20 @@
 
 <div class="survey">
 	<c:url var="actionUrl" value="/survey" />
-	<form method="POST" action="${actionUrl}">
+	<form:form method="POST" action="${actionUrl}" modelAttribute="survey">
 		<label for="parkCode">Select Favorite Park</label>
 		<select name="parkCode">
 			<c:forEach var="park" items="${parksList}">
 				<option value="${park.parkCode}">${park.parkName}</option>
 			</c:forEach>
 		</select>
+		<br>
+		<br>
 		<label for="emailAddress">Email Address</label>
-		<input type="text" name="emailAddress" placeholder="example@example.com" />
+		<form:input path="emailAddress" placeholder="example@example.com" />
+<%-- 		<form:errors path="emailAddress"/> --%>
+		<br>
+		<br>
 		<label for="state">State of Residence</label>
 		<select name="state">
 			<option value="AL">Alabama</option>
@@ -69,14 +74,19 @@
 			<option value="WV">West Virginia</option>
 			<option value="WI">Wisconsin</option>
 			<option value="WY">Wyoming</option>
-		</select><br>
+		</select>
+		<br>
+		<br>
 		<label for="activityLevel">Activity Level</label>
 		<div class="option"><input type="radio" name="activityLevel" value="inactive" checked> Inactive</div>
 		<div class="option"><input type="radio" name="activityLevel" value="sedentary"> Sedentary</div>
 		<div class="option"><input type="radio" name="activityLevel" value="active"> Active</div>
-		<div class="option"><input type="radio" name="activityLevel" value="xactive"> Extremely Active</div><br>
+		<div class="option"><input type="radio" name="activityLevel" value="xactive"> Extremely Active</div>
+		<br>
+		<br>
+		
 		<input type="submit" name="submit" class="btn btn-success" value="Submit Survey"/>
-	</form>
+	</form:form>
 </div>
 
 <%@include file="common/footer.jspf"%>
