@@ -9,11 +9,11 @@
 	<c:url var="actionUrl" value="/survey" />
 	<form:form method="POST" action="${actionUrl}" modelAttribute="survey">
 		<label for="parkCode">Select Favorite Park</label>
-		<select name="parkCode">
+		<form:select path="parkCode">
 			<c:forEach var="park" items="${parksList}">
-				<option value="${park.parkCode}">${park.parkName}</option>
+				<form:option value="${park.parkCode}">${park.parkName}</form:option>
 			</c:forEach>
-		</select>
+		</form:select>
 		<br>
 		<br>
 		<label for="emailAddress">Email Address</label>
@@ -22,66 +22,66 @@
 		<br>
 		<br>
 		<label for="state">State of Residence</label>
-		<select name="state">
-			<option value="AL">Alabama</option>
-			<option value="AK">Alaska</option>
-			<option value="AZ">Arizona</option>
-			<option value="AR">Arkansas</option>
-			<option value="CA">California</option>
-			<option value="CO">Colorado</option>
-			<option value="CT">Connecticut</option>
-			<option value="DE">Delaware</option>
-			<option value="DC">District Of Columbia</option>
-			<option value="FL">Florida</option>
-			<option value="GA">Georgia</option>
-			<option value="HI">Hawaii</option>
-			<option value="ID">Idaho</option>
-			<option value="IL">Illinois</option>
-			<option value="IN">Indiana</option>
-			<option value="IA">Iowa</option>
-			<option value="KS">Kansas</option>
-			<option value="KY">Kentucky</option>
-			<option value="LA">Louisiana</option>
-			<option value="ME">Maine</option>
-			<option value="MD">Maryland</option>
-			<option value="MA">Massachusetts</option>
-			<option value="MI">Michigan</option>
-			<option value="MN">Minnesota</option>
-			<option value="MS">Mississippi</option>
-			<option value="MO">Missouri</option>
-			<option value="MT">Montana</option>
-			<option value="NE">Nebraska</option>
-			<option value="NV">Nevada</option>
-			<option value="NH">New Hampshire</option>
-			<option value="NJ">New Jersey</option>
-			<option value="NM">New Mexico</option>
-			<option value="NY">New York</option>
-			<option value="NC">North Carolina</option>
-			<option value="ND">North Dakota</option>
-			<option value="OH">Ohio</option>
-			<option value="OK">Oklahoma</option>
-			<option value="OR">Oregon</option>
-			<option value="PA">Pennsylvania</option>
-			<option value="RI">Rhode Island</option>
-			<option value="SC">South Carolina</option>
-			<option value="SD">South Dakota</option>
-			<option value="TN">Tennessee</option>
-			<option value="TX">Texas</option>
-			<option value="UT">Utah</option>
-			<option value="VT">Vermont</option>
-			<option value="VA">Virginia</option>
-			<option value="WA">Washington</option>
-			<option value="WV">West Virginia</option>
-			<option value="WI">Wisconsin</option>
-			<option value="WY">Wyoming</option>
-		</select>
+		<form:select path="state">
+			<form:option value="AL">Alabama</form:option>
+			<form:option value="AK">Alaska</form:option>
+			<form:option value="AZ">Arizona</form:option>
+			<form:option value="AR">Arkansas</form:option>
+			<form:option value="CA">California</form:option>
+			<form:option value="CO">Colorado</form:option>
+			<form:option value="CT">Connecticut</form:option>
+			<form:option value="DE">Delaware</form:option>
+			<form:option value="DC">District Of Columbia</form:option>
+			<form:option value="FL">Florida</form:option>
+			<form:option value="GA">Georgia</form:option>
+			<form:option value="HI">Hawaii</form:option>
+			<form:option value="ID">Idaho</form:option>
+			<form:option value="IL">Illinois</form:option>
+			<form:option value="IN">Indiana</form:option>
+			<form:option value="IA">Iowa</form:option>
+			<form:option value="KS">Kansas</form:option>
+			<form:option value="KY">Kentucky</form:option>
+			<form:option value="LA">Louisiana</form:option>
+			<form:option value="ME">Maine</form:option>
+			<form:option value="MD">Maryland</form:option>
+			<form:option value="MA">Massachusetts</form:option>
+			<form:option value="MI">Michigan</form:option>
+			<form:option value="MN">Minnesota</form:option>
+			<form:option value="MS">Mississippi</form:option>
+			<form:option value="MO">Missouri</form:option>
+			<form:option value="MT">Montana</form:option>
+			<form:option value="NE">Nebraska</form:option>
+			<form:option value="NV">Nevada</form:option>
+			<form:option value="NH">New Hampshire</form:option>
+			<form:option value="NJ">New Jersey</form:option>
+			<form:option value="NM">New Mexico</form:option>
+			<form:option value="NY">New York</form:option>
+			<form:option value="NC">North Carolina</form:option>
+			<form:option value="ND">North Dakota</form:option>
+			<form:option value="OH">Ohio</form:option>
+			<form:option value="OK">Oklahoma</form:option>
+			<form:option value="OR">Oregon</form:option>
+			<form:option value="PA">Pennsylvania</form:option>
+			<form:option value="RI">Rhode Island</form:option>
+			<form:option value="SC">South Carolina</form:option>
+			<form:option value="SD">South Dakota</form:option>
+			<form:option value="TN">Tennessee</form:option>
+			<form:option value="TX">Texas</form:option>
+			<form:option value="UT">Utah</form:option>
+			<form:option value="VT">Vermont</form:option>
+			<form:option value="VA">Virginia</form:option>
+			<form:option value="WA">Washington</form:option>
+			<form:option value="WV">West Virginia</form:option>
+			<form:option value="WI">Wisconsin</form:option>
+			<form:option value="WY">Wyoming</form:option>
+		</form:select>
 		<br>
 		<br>
 		<label for="activityLevel">Activity Level</label>
-		<div class="option"><input type="radio" name="activityLevel" value="inactive" checked> Inactive</div>
-		<div class="option"><input type="radio" name="activityLevel" value="sedentary"> Sedentary</div>
-		<div class="option"><input type="radio" name="activityLevel" value="active"> Active</div>
-		<div class="option"><input type="radio" name="activityLevel" value="xactive"> Extremely Active</div>
+		<div class="option"><form:radiobutton path="activityLevel" value="inactive"/> <form:label path="activityLevel">Inactive</form:label></div>
+		<div class="option"><form:radiobutton path="activityLevel" value="sedentary"/> Sedentary</div>
+		<div class="option"><form:radiobutton path="activityLevel" value="active"/> Active</div>
+		<div class="option"><form:radiobutton path="activityLevel" value="xactive"/> Extremely Active</div>
 		<br>
 		<br>
 		

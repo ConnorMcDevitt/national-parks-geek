@@ -37,8 +37,7 @@ public class NPGeekController {
 	
 	@RequestMapping(path={"/", "/home"}, method=RequestMethod.GET)
 	public String showHomePage(Model modelHolder) {
-		List<Park> listOfParks = new ArrayList<>();
-		listOfParks = parkDao.getAllParks();
+		List<Park> listOfParks = parkDao.getAllParks();
 		modelHolder.addAttribute("parksList", listOfParks);
 		
 		return "homePage";

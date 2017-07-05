@@ -118,18 +118,11 @@
 </c:choose>
 <c:url var="actionUrl" value="/details/${park.parkCode}"/>
 <div class="tempScale">
-<c:choose>	
-	<c:when test="${isCelsius}">
-		<c:set var="isSelected" value="selected" />
-	</c:when>
-	<c:otherwise>
-		<c:set var="isSelected" value="" />
-	</c:otherwise>
-</c:choose>
+
 <form method="POST" action="${actionUrl}">
 	<select name="isCelsius">
-		<option value="false" selected>Fahrenheit</option>
-		<option value="true" ${isSelected}>Celsius</option>
+		<option value="false" ${isCelsius ? '' : 'selected'}>Fahrenheit</option>
+		<option value="true" ${isCelsius ? 'selected' : ''}>Celsius</option>
 	</select>
 	<input type="submit" name="submit" class="btn btn-success" value="Go"/>
 </form>
